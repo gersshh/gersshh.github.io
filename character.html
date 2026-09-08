@@ -120,8 +120,31 @@
     color: var(--char-accent);
     margin-left:6px;
   }
+  .gift-row .gname .spec-badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9px;
+    color: #ff80ab;
+    border: 1px solid #ff80ab;
+    padding: 1px 4px;
+    margin-left: 4px;
+  }
   .gift-row .gneed{ display:block; font-size:10.5px; color:var(--dim); font-weight:400; margin-top:3px; }
   .gift-row .gval{ font-family:'IBM Plex Mono', monospace; color: var(--char-accent); font-weight:600; font-size: 12px; white-space:nowrap; text-align:right; }
+
+  /* Custom Gift inline input editor */
+  .custom-editor{
+    background: var(--bg);
+    border: 1px dashed var(--char-accent);
+    padding: 12px;
+    margin-top: 8px;
+    display: none;
+    gap: 12px;
+  }
+  .custom-editor.open{ display: flex; }
+  .custom-editor .c-field{ flex: 1; }
+  .custom-editor .c-field label{ display:block; font-size: 10.5px; color:var(--dim); margin-bottom: 4px; font-family:'IBM Plex Mono', monospace; }
+  .custom-editor .c-field input{ width:100%; background:var(--panel); border:1px solid var(--line); color:var(--ink); padding:6px 8px; font-size:13px; }
 
   .field{ margin-bottom: 16px; }
   .field label{ display:block; font-size: 12px; color: var(--dim); margin-bottom: 5px; }
@@ -135,6 +158,50 @@
     font-family: 'Archivo', sans-serif;
   }
   .field input:focus, .field select:focus{ outline:none; border-color: var(--char-accent); }
+
+  /* Daily gift buttons */
+  .segmented-btns{
+    display: flex;
+    gap: 6px;
+  }
+  .seg-btn{
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 9px 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s ease;
+  }
+  .seg-btn:hover{ border-color: var(--char-accent); }
+  .seg-btn.active{
+    background: var(--char-accent);
+    color: #101014;
+    border-color: var(--char-accent);
+  }
+
+  .unlimited-box{
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .unlimited-box input[type="number"]{
+    width: 70px;
+    padding: 6px;
+    font-size: 13px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    text-align: center;
+  }
 
   .toggle{ display:flex; gap: 10px; align-items:flex-start; padding: 10px 0; border-top: 1px solid var(--line); }
   .toggle:first-child{ border-top:none; padding-top:0; }
@@ -182,21 +249,47 @@
   let character = null;
   let GIFTS = {};
   let activeGiftId = null;
+  let customGift = {
+    id: "custom-gift",
+    gift: "Regalo Personalizado",
+    value: 200,
+    fons: 3000,
+    icon: "https://media.dexerto.com/media/Handwritten%20Letter.webp",
+    isCustom: true
+  };
+  let standardGiftsPerDay = 3;
+  let specialGiftsPerDay = 3;
+  let specialAllAtOnce = false;
 
   function initials(name){ return name.trim()[0].toUpperCase(); }
 
   function resolveGift(entry){
     const g = GIFTS[entry.id];
-    if(!g) return { id: entry.id, gift: entry.id, value: 100, fons: 300, icon: FALLBACK_ICON };
-    return { id: entry.id, gift: g.name, value: g.value, fons: g.fons, icon: g.icon };
+    if(!g) return { id: entry.id, gift: entry.id, value: 100, fons: 300, icon: FALLBACK_ICON, universal: false };
+    return { id: entry.id, gift: g.name, value: g.value, fons: g.fons, icon: g.icon, universal: !!g.universal };
   }
 
   function giftsOf(c){
-    if(c.gifts && c.gifts.length) return c.gifts.map(resolveGift);
-    return [];
+    let list = [];
+    if(c.gifts && c.gifts.length) list = c.gifts.map(resolveGift);
+    
+    // Añadir universales si no están
+    const universals = ["handwritten-letter", "floe-cinema-ticket"];
+    universals.forEach(uid => {
+      if(!list.some(it => it.id === uid) && GIFTS[uid]){
+        list.push(resolveGift({ id: uid }));
+      }
+    });
+
+    // Ordenar de mayor afinidad a menor
+    list.sort((a,b) => b.value - a.value);
+
+    // Añadir opción personalizada al final
+    list.push(customGift);
+    return list;
   }
 
-  // Extrae el color representativo más saturado analizando los píxeles directamente
+  // Extracción cromática certera en tiempo de ejecución
   function extractAccentFromUrl(imageUrl, slug, onColor){
     const cacheKey = `nte_accent_${slug}`;
     const cached = sessionStorage.getItem(cacheKey);
@@ -273,7 +366,6 @@
 
       window.history.replaceState({}, '', '/' + encodeURIComponent(character.name));
 
-      // Extraer color directamente de la imagen del personaje
       const charImgUrl = `${CHAR_CDN}${character.slug}_card.webp`;
       extractAccentFromUrl(charImgUrl, character.slug, (color) => {
         document.documentElement.style.setProperty('--char-accent', color);
@@ -293,7 +385,7 @@
   function renderDetail(){
     const c = character;
     const items = giftsOf(c);
-    activeGiftId = items[0] ? items[0].id : null;
+    if(!activeGiftId) activeGiftId = items[0].id;
 
     document.title = `${c.name} — Bond Neverness to Everness`;
 
@@ -319,6 +411,16 @@
           <div class="block" style="margin-bottom:22px;">
             <h2>Regalos disponibles (haz clic para seleccionar)</h2>
             <div id="giftList"></div>
+            <div class="custom-editor" id="customEditor">
+              <div class="c-field">
+                <label>Afinidad del regalo:</label>
+                <input type="number" id="customValInput" min="1" max="5000" value="${customGift.value}">
+              </div>
+              <div class="c-field">
+                <label>Costo en Fons:</label>
+                <input type="number" id="customFonsInput" min="0" max="100000" value="${customGift.fons}">
+              </div>
+            </div>
           </div>
 
           <div class="block">
@@ -331,13 +433,8 @@
               <label>Afinidad ya obtenida en el nivel actual</label>
               <input type="number" id="curXp" min="0" value="0">
             </div>
-            <div class="field">
-              <label>Fons por unidad</label>
-              <input type="number" id="fonsPerItem" min="0" value="0">
-            </div>
-            <div class="field">
-              <label>Regalos / día a este personaje</label>
-              <input type="number" id="giftsPerDay" min="1" max="3" value="3">
+            <div class="field" id="dailyGiftsContainer">
+              <!-- Renderizado dinámico según el tipo de regalo -->
             </div>
             <div class="toggle">
               <input type="checkbox" id="appraiser">
@@ -345,7 +442,7 @@
             </div>
             <div class="toggle">
               <input type="checkbox" id="dailyAction">
-              <div><strong>Acción / Salida diaria (nivel 7+)</strong><span>+200 afinidad/día fija sin coste de regalo</span></div>
+              <div><strong>Acción / Salida diaria (nivel 7+)</strong><span>+200 afinidad/día fija solo al alcanzar nivel 7</span></div>
             </div>
           </div>
         </div>
@@ -368,68 +465,155 @@
     const els = {
       curLevel: curLevelSel,
       curXp: document.querySelector('#curXp'),
-      fonsPerItem: document.querySelector('#fonsPerItem'),
-      giftsPerDay: document.querySelector('#giftsPerDay'),
       appraiser: document.querySelector('#appraiser'),
       dailyAction: document.querySelector('#dailyAction'),
       giftList: document.querySelector('#giftList'),
       headerSub: document.querySelector('#headerSub'),
+      dailyGiftsContainer: document.querySelector('#dailyGiftsContainer'),
+      customEditor: document.querySelector('#customEditor'),
+      customValInput: document.querySelector('#customValInput'),
+      customFonsInput: document.querySelector('#customFonsInput'),
     };
 
-    function updateFonsDefault(){
-      const chosen = items.find(it => it.id === activeGiftId) || items[0];
-      els.fonsPerItem.value = (chosen && chosen.fons) ? chosen.fons : 0;
-    }
-    updateFonsDefault();
+    // Editor del regalo personalizado
+    els.customValInput.addEventListener('input', () => {
+      customGift.value = Math.max(1, parseInt(els.customValInput.value || '1', 10));
+      render();
+    });
+    els.customFonsInput.addEventListener('input', () => {
+      customGift.fons = Math.max(0, parseInt(els.customFonsInput.value || '0', 10));
+      render();
+    });
 
+    // Simulación exacta con desbordamiento y activación estricta en nivel 7+
     function calculateWithGift(giftObj){
       const curLevel = parseInt(els.curLevel.value, 10);
       let curXp = Math.max(0, parseInt(els.curXp.value || '0', 10));
-      const giftsPerDay = Math.max(1, parseInt(els.giftsPerDay.value || '1', 10));
       const hasAppraiser = els.appraiser.checked;
       const hasDailyAction = els.dailyAction.checked;
       const baseGiftValue = giftObj.value;
 
-      const segmentNeed = thresholds[curLevel - 1] || 0;
-      if(curXp > segmentNeed) curXp = segmentNeed;
+      const isSpecial = giftObj.universal;
+      let effectiveGpd = isSpecial ? (specialAllAtOnce ? 99999 : specialGiftsPerDay) : standardGiftsPerDay;
 
-      let segs = [];
-      for(let lvl = curLevel; lvl <= 9; lvl++){
-        const need = thresholds[lvl - 1];
-        const already = (lvl === curLevel) ? curXp : 0;
-        const remaining = Math.max(0, need - already);
-        const bonusApplies = hasAppraiser && (lvl <= 8);
-        const eff = bonusApplies ? Math.round(baseGiftValue * 1.05) : baseGiftValue;
-        segs.push({ lvl, need, remaining, bonusApplies, eff, used: 0 });
+      let currentLvl = curLevel;
+      let currentXp = curXp;
+      
+      // Control de desbordamiento en nivel inicial
+      const initialThreshold = thresholds[currentLvl - 1] || 0;
+      if(currentXp > initialThreshold) currentXp = initialThreshold;
+
+      let itemsUsed = 0;
+      let days = 0;
+      let segBreakdown = [];
+      for(let l = curLevel; l <= 9; l++){
+        segBreakdown.push({ lvl: l, need: thresholds[l - 1], items: 0 });
       }
 
-      let days = 0, itemsUsed = 0, si = 0;
-      while(si < segs.length && days < 20000){
+      const maxDaysSafety = 20000;
+      while(currentLvl < 10 && days < maxDaysSafety){
         days++;
-        if(hasDailyAction && si < segs.length){
-          segs[si].remaining -= 200;
-          if(segs[si].remaining <= 0) si++;
+
+        // La acción diaria (+200) SOLO se activa si ya se ha alcanzado el nivel 7
+        if(hasDailyAction && currentLvl >= 7){
+          currentXp += 200;
+          while(currentLvl < 10 && currentXp >= thresholds[currentLvl - 1]){
+            currentXp -= thresholds[currentLvl - 1];
+            currentLvl++;
+          }
+          if(currentLvl >= 10) break;
         }
-        let sent = 0;
-        while(sent < giftsPerDay && si < segs.length){
-          const s = segs[si];
-          s.remaining -= s.eff;
-          s.used++; itemsUsed++; sent++;
-          if(s.remaining <= 0){ si++; }
+
+        // Entrega de regalos del día
+        let givenToday = 0;
+        while(givenToday < effectiveGpd && currentLvl < 10){
+          const bonusApplies = hasAppraiser && (currentLvl <= 8);
+          const effectiveGiftXp = bonusApplies ? Math.round(baseGiftValue * 1.05) : baseGiftValue;
+
+          currentXp += effectiveGiftXp;
+          itemsUsed++;
+          givenToday++;
+
+          // Registrar en qué nivel se gastó el ítem
+          if(currentLvl <= 9){
+            const seg = segBreakdown.find(s => s.lvl === currentLvl);
+            if(seg) seg.items++;
+          }
+
+          // Desbordamiento exacto al subir de nivel (el excedente pasa al siguiente nivel)
+          while(currentLvl < 10 && currentXp >= thresholds[currentLvl - 1]){
+            currentXp -= thresholds[currentLvl - 1];
+            currentLvl++;
+          }
         }
-        if(si >= segs.length) break;
       }
 
-      return { curLevel, segs, items: itemsUsed, days, giftsPerDay };
+      if(isSpecial && specialAllAtOnce) days = 1;
+
+      return { curLevel, segBreakdown, items: itemsUsed, days, effectiveGpd, isSpecial };
+    }
+
+    function renderDailyGiftsControl(currentGift){
+      if(currentGift.universal){
+        // Control para regalos especiales sin tope de 3
+        els.dailyGiftsContainer.innerHTML = `
+          <label>Planificación de entrega (Regalo especial)</label>
+          <div class="unlimited-box">
+            <span>
+              <strong style="color:#ff80ab;">★ Sin límite diario de 3</strong><br>
+              <span style="font-size:11px; color:var(--dim);">No consume los 3 regalos diarios</span>
+            </span>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button type="button" class="seg-btn ${specialAllAtOnce ? 'active' : ''}" id="btnAllAtOnce" style="padding:6px 10px; font-size:11px;">Todos en 1 día</button>
+              ${!specialAllAtOnce ? `<input type="number" id="specialGpdInput" min="1" max="100" value="${specialGiftsPerDay}"> <span style="font-size:11px;">/día</span>` : ''}
+            </div>
+          </div>
+        `;
+        document.getElementById('btnAllAtOnce').addEventListener('click', () => {
+          specialAllAtOnce = !specialAllAtOnce;
+          render();
+        });
+        if(!specialAllAtOnce){
+          document.getElementById('specialGpdInput').addEventListener('input', (e) => {
+            specialGiftsPerDay = Math.max(1, parseInt(e.target.value || '1', 10));
+            render();
+          });
+        }
+      } else {
+        // Control para regalos estándar (estrictamente 1, 2 o 3 al día)
+        els.dailyGiftsContainer.innerHTML = `
+          <label>Regalos / día permitidos por el juego (Máx. 3)</label>
+          <div class="segmented-btns">
+            <button type="button" class="seg-btn ${standardGiftsPerDay === 1 ? 'active' : ''}" data-val="1">1 / día</button>
+            <button type="button" class="seg-btn ${standardGiftsPerDay === 2 ? 'active' : ''}" data-val="2">2 / día</button>
+            <button type="button" class="seg-btn ${standardGiftsPerDay === 3 ? 'active' : ''}" data-val="3">3 / día (Máx)</button>
+          </div>
+        `;
+        els.dailyGiftsContainer.querySelectorAll('.seg-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            standardGiftsPerDay = parseInt(btn.dataset.val, 10);
+            render();
+          });
+        });
+      }
     }
 
     function render(){
       const currentGift = items.find(it => it.id === activeGiftId) || items[0];
       const r = calculateWithGift(currentGift);
 
-      els.headerSub.textContent = `Regalo seleccionado: ${currentGift.gift} · +${currentGift.value} afinidad`;
+      els.headerSub.textContent = `Regalo seleccionado: ${currentGift.gift} · +${currentGift.value} afinidad | Costo: ${currentGift.fons ? currentGift.fons.toLocaleString() + ' fons' : 'Gratis / Evento'}`;
 
-      // Renderizado de lista interactiva (selección exclusiva por clic en la fila)
+      // Mostrar/ocultar editor personalizado
+      if(currentGift.isCustom){
+        els.customEditor.classList.add('open');
+      } else {
+        els.customEditor.classList.remove('open');
+      }
+
+      renderDailyGiftsControl(currentGift);
+
+      // Renderizar lista interactiva
       els.giftList.innerHTML = items.map(it => {
         const itemCalc = calculateWithGift(it);
         const isActive = it.id === activeGiftId;
@@ -437,12 +621,14 @@
           <div class="gift-row ${isActive ? 'active' : ''}" data-id="${it.id}">
             <img class="gimg" src="${it.icon}" referrerpolicy="no-referrer" onerror="this.src='${FALLBACK_ICON}'">
             <span class="gname">
-              ${it.gift} ${isActive ? '<span class="active-badge">● SELECCIONADO</span>' : ''}
-              <span class="gneed">${itemCalc.items.toLocaleString()} unidades · ~${itemCalc.days.toLocaleString()} días requeridos</span>
+              ${it.gift}
+              ${it.universal ? '<span class="spec-badge">SIN LÍMITE</span>' : ''}
+              ${isActive ? '<span class="active-badge">● ACTIVO</span>' : ''}
+              <span class="gneed">${itemCalc.items.toLocaleString()} unidades · ~${itemCalc.days.toLocaleString()} días necesarios</span>
             </span>
             <span class="gval">
               +${it.value} af.
-              ${it.fons ? '<br><span style="font-size:10.5px; color:var(--dim); font-weight:400;">' + it.fons.toLocaleString() + ' fons</span>' : ''}
+              ${it.fons ? '<br><span style="font-size:10.5px; color:var(--dim); font-weight:400;">' + it.fons.toLocaleString() + ' fons</span>' : '<br><span style="font-size:10.5px; color:#ff80ab; font-weight:400;">Especial</span>'}
             </span>
           </div>
         `;
@@ -451,7 +637,6 @@
       els.giftList.querySelectorAll('.gift-row').forEach(row => {
         row.addEventListener('click', () => {
           activeGiftId = row.dataset.id;
-          updateFonsDefault();
           render();
         });
       });
@@ -461,24 +646,24 @@
         body.innerHTML = `<div class="complete">BOND 10 ALCANZADO</div>`;
         return;
       }
-      const fons = Math.max(0, parseFloat(els.fonsPerItem.value || '0'));
-      const totalFons = r.items * fons;
+      
+      const totalFons = currentGift.fons ? (r.items * currentGift.fons) : 0;
 
-      const rows = r.segs.map(s => `
+      const rows = r.segBreakdown.map(s => `
         <tr>
           <td>${s.lvl} → ${s.lvl+1}</td>
           <td>${s.need.toLocaleString()}</td>
-          <td>${s.bonusApplies ? '+5%' : '—'}</td>
-          <td>${s.used.toLocaleString()}</td>
+          <td>${(els.appraiser.checked && s.lvl <= 8) ? '+5%' : '—'}</td>
+          <td>${s.items.toLocaleString()}</td>
         </tr>`).join('');
 
       body.innerHTML = `
         <div class="big-stat">${r.items.toLocaleString()}</div>
         <div class="lbl">unidades de ${currentGift.gift}</div>
         <div class="stat3">
-          <div class="cell"><div class="n">${totalFons.toLocaleString()}</div><div class="l">fons totales</div></div>
+          <div class="cell"><div class="n">${totalFons ? totalFons.toLocaleString() : '—'}</div><div class="l">fons totales</div></div>
           <div class="cell"><div class="n">${r.days.toLocaleString()}</div><div class="l">días estimados</div></div>
-          <div class="cell"><div class="n">${r.giftsPerDay}</div><div class="l">regalos/día</div></div>
+          <div class="cell"><div class="n">${r.isSpecial && specialAllAtOnce ? 'Todos' : r.effectiveGpd}</div><div class="l">regalos/día</div></div>
         </div>
         <table>
           <thead><tr><th>Nivel</th><th>Afinidad</th><th>Bonus</th><th>Items</th></tr></thead>
@@ -487,7 +672,7 @@
       `;
     }
 
-    [els.curLevel, els.curXp, els.fonsPerItem, els.giftsPerDay, els.appraiser, els.dailyAction].forEach(el => {
+    [els.curLevel, els.curXp, els.appraiser, els.dailyAction].forEach(el => {
       el.addEventListener('input', render);
       el.addEventListener('change', render);
     });
