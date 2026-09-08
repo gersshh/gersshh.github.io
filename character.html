@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<title>Personaje — Neverness to Everness</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg: #101014;
+    --panel: #17171d;
+    --line: #2b2b33;
+    --ink: #f2f1ec;
+    --dim: #8a8a92;
+    --accent: #e0b872;
+    --char-accent: var(--accent);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Archivo', sans-serif;
+    min-height: 100vh;
+  }
+
+  header{
+    border-bottom: 1px solid var(--line);
+    padding: 22px 24px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap: 10px;
+  }
+  header .mark{ font-family:'Archivo Black', sans-serif; font-size: 18px; letter-spacing: -0.01em; }
+  header .mark span{ color: var(--dim); font-weight:400; font-family:'IBM Plex Mono', monospace; font-size: 13px; margin-left: 8px; }
+  #backBtn{
+    background:none; border: 1px solid var(--line); color: var(--ink);
+    font-family:'IBM Plex Mono', monospace; font-size: 12px;
+    padding: 8px 14px; cursor:pointer; text-decoration:none;
+    display:inline-block;
+  }
+  #backBtn:hover{ border-color: var(--ink); }
+
+  main{ max-width: 1120px; margin: 0 auto; padding: 30px 20px 80px; }
+
+  .detail-head{
+    display:flex;
+    align-items:center;
+    gap: 18px;
+    padding-bottom: 22px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid var(--line);
+  }
+  .detail-head .portrait{
+    width: 90px; height: 90px;
+    border: 3px solid var(--char-accent);
+    box-shadow: 0 0 16px rgba(0,0,0,0.6), 0 0 10px var(--char-accent);
+    flex-shrink:0;
+    overflow:hidden;
+    position:relative;
+    background: var(--panel);
+  }
+  .detail-head .portrait img{ width:100%; height:100%; object-fit:cover; object-position: top center; }
+  .detail-head .portrait .fallback{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'Archivo Black', sans-serif; font-size: 40px; color: var(--char-accent);
+  }
+  .detail-head h1{ font-size: 26px; font-weight: 700; display:flex; align-items:center; flex-wrap:wrap; gap:6px; }
+  .detail-head .sub{ font-family:'IBM Plex Mono', monospace; font-size: 12px; color: var(--dim); margin-top: 4px; }
+
+  .rank-badge{ width:22px; height:22px; vertical-align: middle; filter: drop-shadow(0 2px 4px rgba(0,0,0,.6)); }
+  .phase-tag-detail{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight:600;
+    padding: 2px 8px;
+    margin-left: 6px;
+    border: 1px solid var(--char-accent);
+    color: var(--char-accent);
+    background: rgba(16,16,20,0.85);
+  }
+
+  .cols{ display:grid; grid-template-columns: 1fr 1.3fr; gap: 22px; }
+  @media (max-width: 760px){ .cols{ grid-template-columns: 1fr; } }
+
+  .block{ border: 1px solid var(--line); padding: 20px; background: var(--panel); }
+  .block h2{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--dim);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .gift-row{
+    display:flex; justify-content:space-between; align-items:center;
+    gap: 12px;
+    padding: 12px 10px; border-top: 1px solid var(--line); font-size: 12.5px;
+    cursor:pointer;
+    transition: background-color .15s ease, border-color .15s ease;
+  }
+  .gift-row:first-child{ border-top:none; }
+  .gift-row:hover{ background: rgba(255,255,255,0.04); }
+  .gift-row.active{
+    background: rgba(255, 255, 255, 0.07);
+    border-left: 3px solid var(--char-accent);
+    padding-left: 14px;
+  }
+  .gift-row .gimg{ width:36px; height:36px; object-fit:contain; flex-shrink:0; background:var(--bg); border:1px solid var(--line); padding:2px; }
+  .gift-row .gname{ flex:1; font-weight:600; }
+  .gift-row .gname .active-badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px;
+    color: var(--char-accent);
+    margin-left:6px;
+  }
+  .gift-row .gneed{ display:block; font-size:10.5px; color:var(--dim); font-weight:400; margin-top:3px; }
+  .gift-row .gval{ font-family:'IBM Plex Mono', monospace; color: var(--char-accent); font-weight:600; font-size: 12px; white-space:nowrap; text-align:right; }
+
+  .field{ margin-bottom: 16px; }
+  .field label{ display:block; font-size: 12px; color: var(--dim); margin-bottom: 5px; }
+  .field input, .field select{
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 10px 11px;
+    font-size: 14px;
+    font-family: 'Archivo', sans-serif;
+  }
+  .field input:focus, .field select:focus{ outline:none; border-color: var(--char-accent); }
+
+  .toggle{ display:flex; gap: 10px; align-items:flex-start; padding: 10px 0; border-top: 1px solid var(--line); }
+  .toggle:first-child{ border-top:none; padding-top:0; }
+  .toggle input{ margin-top:3px; width:16px; height:16px; accent-color: var(--char-accent); }
+  .toggle strong{ display:block; font-size: 13px; }
+  .toggle span{ font-size: 11.5px; color: var(--dim); }
+
+  .results{ border-color: var(--char-accent); }
+  .big-stat{ font-family:'Archivo Black', sans-serif; font-size: 46px; color: var(--char-accent); line-height: 1; }
+  .big-stat + .lbl{ font-family:'IBM Plex Mono', monospace; font-size: 11px; color: var(--dim); margin-top: 6px; margin-bottom: 20px; }
+
+  .stat3{ display:grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 20px; }
+  .stat3 .cell{ background: var(--bg); padding: 12px; }
+  .stat3 .cell .n{ font-size: 18px; font-weight:700; }
+  .stat3 .cell .l{ font-family:'IBM Plex Mono', monospace; font-size: 10px; color: var(--dim); margin-top: 3px; }
+
+  table{ width:100%; border-collapse:collapse; font-size: 12.5px; }
+  th{ text-align:left; font-family:'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--dim); font-weight:500; padding: 7px 6px; border-bottom: 1px solid var(--line); }
+  td{ padding: 7px 6px; border-bottom: 1px solid var(--line); }
+
+  .complete{ font-family:'Archivo Black', sans-serif; font-size: 22px; color: var(--char-accent); padding: 10px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="mark">BOND<span>neverness to everness</span></div>
+  <a href="index.html" id="backBtn">← volver</a>
+</header>
+
+<main id="mainContent">
+  <div style="text-align:center; padding: 60px 0; color:var(--dim);">Cargando personaje...</div>
+</main>
+
+<script>
+  const thresholds = [500, 1000, 2000, 3500, 5000, 7000, 9000, 12000, 16000];
+  const CHAR_CDN = "https://cdn.prydwen.gg/images/nte/characters/";
+  const RANK_ICON_S = "data:image/png;base64,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";
+  const RANK_ICON_A = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAD/AP8A/6C9p5MAAAABb3JOVAHPoneaAACAAElEQVR42uz9W5MlWXYeiH1r7b3d/Zw4EZEZmVn3ri40qrvBbhCYxoUACNoMaDNjQ9qIomwkSg/zNDI9jF71HySZ6VF6lcn0MkaZQaIEySjaAEOicRUJoAmAAAroRgHoS1V1XfMaEee4+95r6WFffLufE1lZ1ZV1aaSneUZkxrmF+/72un3rW8CT48nx5HhyPDmeHE+OJ8eT48nx5HhyPDmeHE+OJ8eT48nx5HhyPDmeHE+OJ8eT48nx5HhyPDmeHE+OJ8eT48nx5HhyPDl+0IOeXILHdvA/xssOAOxzl8bv1nY7crMWa7W11qhnEmsMhEWFAICJNYAl0CjKLlDvvWHvhdtw1w3evduPD3AjfAPfCOk95MllfgKQTz0QfgkvNccY+PL4ZKWDv2aNXguME4gejVAG0bEQTplwosorUjTM6qCwBDCYON0MJagoTIDqIIRRBYModiA9D0HvkMFbquGOjhwAgIgvTT9etjCXDrzb4FX/y4A+Ac8TgHwi1+uX8FJrr3MrO7shI6dK9pqGcN3reCzAMyR41NcV9BGVVaB1CnpGsBKgQ5EDVQtAMNErFACiKjcCVIACkUAQVRIVDWo6gDlHSicQ+mcFFsj1AN0zsS3IXiTiV5X1ncYtm+Jt0MTbjfn7eUKw/iv8OqACJwnxxOAfKQH/xxe3mC1PbG+fQaEF8F6xsBTgXAGxbGQ3wToiRe5rqqnUF0J4JTVgMiCyKqSBcMQwOm6Z1TEv2h2O1Q1fxP/pfGvANEAhYfqSAoPRU9KOwYuCXyfmO4T830De9cyvc5K32eiu4bte1B907funr1348HX8XX/5NY+AciHOv4ZYL6PF092Ha6z1+eVwssS5AUBvciK54jNNTJ0JCQNQCZAGlXtREOroAaAISZiZiLDRMxERJQhQembedJ09XU/T1QCEAhAVCEqAhWgVIBkAIiqCkWp6eS4CgAhKkQgIop0XgAgM9/o2H5bYPtNo/b3jOrvMPE/BvD/Bf4mPj1V8/8B1F8U9fF2vHQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjYtMDQtMjNUMDU6NTk6NTQrMDA6MDBGMwtJAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDI2LTA0LTIzVDA1OjU5OjU0KzAwOjAwN26z9QAAACh0RVh0ZGF0ZTptb2RpZnkAMjAyNi0wNC0yM1QwNTo1OTo1NCswMDowMDdus/UAAAAodEVYdGRhdGU6dGltZXN0YW1wADIwMjYtMDQtMjNUMDU6NTk6NTQrMDA6MDBge5IqAAAAAElFTkSuQmCC";
+  function rankIcon(r){ return r === "S" ? RANK_ICON_S : RANK_ICON_A; }
+  const FALLBACK_ICON = "data:image/svg+xml;utf8," + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#17171d"/><path d="M16 6l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z" fill="#e0b872"/></svg>`
+  );
+
+  let character = null;
+  let GIFTS = {};
+  let activeGiftId = null;
+
+  function initials(name){ return name.trim()[0].toUpperCase(); }
+
+  function resolveGift(entry){
+    const g = GIFTS[entry.id];
+    if(!g) return { id: entry.id, gift: entry.id, value: 100, fons: 300, icon: FALLBACK_ICON };
+    return { id: entry.id, gift: g.name, value: g.value, fons: g.fons, icon: g.icon };
+  }
+
+  function giftsOf(c){
+    if(c.gifts && c.gifts.length) return c.gifts.map(resolveGift);
+    return [];
+  }
+
+  // Extrae el color representativo más saturado analizando los píxeles directamente
+  function extractAccentFromUrl(imageUrl, slug, onColor){
+    const cacheKey = `nte_accent_${slug}`;
+    const cached = sessionStorage.getItem(cacheKey);
+    if(cached){
+      onColor(cached);
+      return;
+    }
+
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.referrerPolicy = "no-referrer";
+
+    const proxyUrl = "https://wsrv.nl/?url=" + encodeURIComponent(imageUrl.replace(/^https?:\/\//, '')) + "&w=48&h=48&output=webp";
+    img.src = proxyUrl;
+
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        canvas.width = 40;
+        canvas.height = 40;
+        ctx.drawImage(img, 0, 0, 40, 40);
+        const { data } = ctx.getImageData(0, 0, 40, 40);
+
+        let bestR = 224, bestG = 184, bestB = 114;
+        let maxScore = -1;
+
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i], g = data[i+1], b = data[i+2], a = data[i+3];
+          if (a < 128) continue;
+
+          const max = Math.max(r, g, b);
+          const min = Math.min(r, g, b);
+          const lum = (max + min) / 510;
+          if (lum < 0.16 || lum > 0.86) continue;
+
+          const delta = max - min;
+          const sat = (lum > 0.5) ? delta / (510 - max - min) : delta / (max + min);
+          if (sat < 0.25) continue;
+
+          const score = sat * (1 - Math.abs(lum - 0.55));
+          if (score > maxScore) {
+            maxScore = score;
+            bestR = r; bestG = g; bestB = b;
+          }
+        }
+
+        if (maxScore > 0) {
+          const rgb = `rgb(${bestR}, ${bestG}, ${bestB})`;
+          sessionStorage.setItem(cacheKey, rgb);
+          onColor(rgb);
+        }
+      } catch(e) {}
+    };
+  }
+
+  async function init(){
+    const params = new URLSearchParams(window.location.search);
+    let target = params.get('c');
+    if(!target){
+      const parts = window.location.pathname.split('/').filter(Boolean);
+      target = decodeURIComponent(parts[parts.length - 1] || '');
+    }
+
+    try {
+      const [cRes, gRes] = await Promise.all([fetch('characters.json'), fetch('gifts.json')]);
+      const characters = await cRes.json();
+      GIFTS = await gRes.json();
+
+      character = characters.find(c => 
+        c.name.toLowerCase() === target.toLowerCase() || 
+        c.slug.toLowerCase() === target.toLowerCase()
+      ) || characters[0];
+
+      window.history.replaceState({}, '', '/' + encodeURIComponent(character.name));
+
+      // Extraer color directamente de la imagen del personaje
+      const charImgUrl = `${CHAR_CDN}${character.slug}_card.webp`;
+      extractAccentFromUrl(charImgUrl, character.slug, (color) => {
+        document.documentElement.style.setProperty('--char-accent', color);
+      });
+
+      renderDetail();
+    } catch(err) {
+      document.getElementById('mainContent').innerHTML = `
+        <div style="text-align:center; padding: 40px;">
+          <h2 style="color:var(--accent);">Error al cargar datos</h2>
+          <p style="color:var(--dim); margin-top:10px;">No se pudieron obtener characters.json o gifts.json.</p>
+        </div>
+      `;
+    }
+  }
+
+  function renderDetail(){
+    const c = character;
+    const items = giftsOf(c);
+    activeGiftId = items[0] ? items[0].id : null;
+
+    document.title = `${c.name} — Bond Neverness to Everness`;
+
+    const main = document.getElementById('mainContent');
+    main.innerHTML = `
+      <div class="detail-head">
+        <div class="portrait">
+          <img src="${CHAR_CDN}${c.slug}_card.webp" alt="${c.name}" referrerpolicy="no-referrer"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'${initials(c.name)}'}))">
+        </div>
+        <div>
+          <h1>
+            ${c.name}
+            <img class="rank-badge" src="${rankIcon(c.rank)}" alt="Rango ${c.rank || 'A'}" referrerpolicy="no-referrer">
+            ${c.tag ? `<span class="phase-tag-detail">${c.tag}</span>` : ''}
+          </h1>
+          <div class="sub" id="headerSub">Calculando progreso...</div>
+        </div>
+      </div>
+
+      <div class="cols">
+        <div>
+          <div class="block" style="margin-bottom:22px;">
+            <h2>Regalos disponibles (haz clic para seleccionar)</h2>
+            <div id="giftList"></div>
+          </div>
+
+          <div class="block">
+            <h2>Configuración de Progreso</h2>
+            <div class="field">
+              <label>Nivel de bond actual</label>
+              <select id="curLevel"></select>
+            </div>
+            <div class="field">
+              <label>Afinidad ya obtenida en el nivel actual</label>
+              <input type="number" id="curXp" min="0" value="0">
+            </div>
+            <div class="field">
+              <label>Fons por unidad</label>
+              <input type="number" id="fonsPerItem" min="0" value="0">
+            </div>
+            <div class="field">
+              <label>Regalos / día a este personaje</label>
+              <input type="number" id="giftsPerDay" min="1" max="3" value="3">
+            </div>
+            <div class="toggle">
+              <input type="checkbox" id="appraiser">
+              <div><strong>Perito/a</strong><span>+5% afinidad por regalo hasta nivel de bond 8</span></div>
+            </div>
+            <div class="toggle">
+              <input type="checkbox" id="dailyAction">
+              <div><strong>Acción / Salida diaria (nivel 7+)</strong><span>+200 afinidad/día fija sin coste de regalo</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block results" id="resultsBlock">
+          <h2>Resultado</h2>
+          <div id="resultsBody"></div>
+        </div>
+      </div>
+    `;
+
+    const curLevelSel = document.querySelector('#curLevel');
+    for(let l=1; l<=9; l++){
+      const opt = document.createElement('option');
+      opt.value = l; opt.textContent = `Nivel ${l}`;
+      curLevelSel.appendChild(opt);
+    }
+    curLevelSel.value = 1;
+
+    const els = {
+      curLevel: curLevelSel,
+      curXp: document.querySelector('#curXp'),
+      fonsPerItem: document.querySelector('#fonsPerItem'),
+      giftsPerDay: document.querySelector('#giftsPerDay'),
+      appraiser: document.querySelector('#appraiser'),
+      dailyAction: document.querySelector('#dailyAction'),
+      giftList: document.querySelector('#giftList'),
+      headerSub: document.querySelector('#headerSub'),
+    };
+
+    function updateFonsDefault(){
+      const chosen = items.find(it => it.id === activeGiftId) || items[0];
+      els.fonsPerItem.value = (chosen && chosen.fons) ? chosen.fons : 0;
+    }
+    updateFonsDefault();
+
+    function calculateWithGift(giftObj){
+      const curLevel = parseInt(els.curLevel.value, 10);
+      let curXp = Math.max(0, parseInt(els.curXp.value || '0', 10));
+      const giftsPerDay = Math.max(1, parseInt(els.giftsPerDay.value || '1', 10));
+      const hasAppraiser = els.appraiser.checked;
+      const hasDailyAction = els.dailyAction.checked;
+      const baseGiftValue = giftObj.value;
+
+      const segmentNeed = thresholds[curLevel - 1] || 0;
+      if(curXp > segmentNeed) curXp = segmentNeed;
+
+      let segs = [];
+      for(let lvl = curLevel; lvl <= 9; lvl++){
+        const need = thresholds[lvl - 1];
+        const already = (lvl === curLevel) ? curXp : 0;
+        const remaining = Math.max(0, need - already);
+        const bonusApplies = hasAppraiser && (lvl <= 8);
+        const eff = bonusApplies ? Math.round(baseGiftValue * 1.05) : baseGiftValue;
+        segs.push({ lvl, need, remaining, bonusApplies, eff, used: 0 });
+      }
+
+      let days = 0, itemsUsed = 0, si = 0;
+      while(si < segs.length && days < 20000){
+        days++;
+        if(hasDailyAction && si < segs.length){
+          segs[si].remaining -= 200;
+          if(segs[si].remaining <= 0) si++;
+        }
+        let sent = 0;
+        while(sent < giftsPerDay && si < segs.length){
+          const s = segs[si];
+          s.remaining -= s.eff;
+          s.used++; itemsUsed++; sent++;
+          if(s.remaining <= 0){ si++; }
+        }
+        if(si >= segs.length) break;
+      }
+
+      return { curLevel, segs, items: itemsUsed, days, giftsPerDay };
+    }
+
+    function render(){
+      const currentGift = items.find(it => it.id === activeGiftId) || items[0];
+      const r = calculateWithGift(currentGift);
+
+      els.headerSub.textContent = `Regalo seleccionado: ${currentGift.gift} · +${currentGift.value} afinidad`;
+
+      // Renderizado de lista interactiva (selección exclusiva por clic en la fila)
+      els.giftList.innerHTML = items.map(it => {
+        const itemCalc = calculateWithGift(it);
+        const isActive = it.id === activeGiftId;
+        return `
+          <div class="gift-row ${isActive ? 'active' : ''}" data-id="${it.id}">
+            <img class="gimg" src="${it.icon}" referrerpolicy="no-referrer" onerror="this.src='${FALLBACK_ICON}'">
+            <span class="gname">
+              ${it.gift} ${isActive ? '<span class="active-badge">● SELECCIONADO</span>' : ''}
+              <span class="gneed">${itemCalc.items.toLocaleString()} unidades · ~${itemCalc.days.toLocaleString()} días requeridos</span>
+            </span>
+            <span class="gval">
+              +${it.value} af.
+              ${it.fons ? '<br><span style="font-size:10.5px; color:var(--dim); font-weight:400;">' + it.fons.toLocaleString() + ' fons</span>' : ''}
+            </span>
+          </div>
+        `;
+      }).join('');
+
+      els.giftList.querySelectorAll('.gift-row').forEach(row => {
+        row.addEventListener('click', () => {
+          activeGiftId = row.dataset.id;
+          updateFonsDefault();
+          render();
+        });
+      });
+
+      const body = document.querySelector('#resultsBody');
+      if(r.curLevel >= 10){
+        body.innerHTML = `<div class="complete">BOND 10 ALCANZADO</div>`;
+        return;
+      }
+      const fons = Math.max(0, parseFloat(els.fonsPerItem.value || '0'));
+      const totalFons = r.items * fons;
+
+      const rows = r.segs.map(s => `
+        <tr>
+          <td>${s.lvl} → ${s.lvl+1}</td>
+          <td>${s.need.toLocaleString()}</td>
+          <td>${s.bonusApplies ? '+5%' : '—'}</td>
+          <td>${s.used.toLocaleString()}</td>
+        </tr>`).join('');
+
+      body.innerHTML = `
+        <div class="big-stat">${r.items.toLocaleString()}</div>
+        <div class="lbl">unidades de ${currentGift.gift}</div>
+        <div class="stat3">
+          <div class="cell"><div class="n">${totalFons.toLocaleString()}</div><div class="l">fons totales</div></div>
+          <div class="cell"><div class="n">${r.days.toLocaleString()}</div><div class="l">días estimados</div></div>
+          <div class="cell"><div class="n">${r.giftsPerDay}</div><div class="l">regalos/día</div></div>
+        </div>
+        <table>
+          <thead><tr><th>Nivel</th><th>Afinidad</th><th>Bonus</th><th>Items</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      `;
+    }
+
+    [els.curLevel, els.curXp, els.fonsPerItem, els.giftsPerDay, els.appraiser, els.dailyAction].forEach(el => {
+      el.addEventListener('input', render);
+      el.addEventListener('change', render);
+    });
+
+    render();
+  }
+
+  init();
+</script>
+</body>
+</html>
