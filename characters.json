@@ -5,9 +5,15 @@
     "rank": "S",
     "tag": "v1.4 Fase 2",
     "gifts": [
-      { "id": "asahi-inori-crimson" },
-      { "id": "golden-dawn" },
-      { "id": "ebisu-royal-tower" }
+      {
+        "id": "asahi-inori-crimson"
+      },
+      {
+        "id": "golden-dawn"
+      },
+      {
+        "id": "ebisu-royal-tower"
+      }
     ]
   },
   {
@@ -16,9 +22,15 @@
     "rank": "S",
     "tag": "v1.4 Fase 1",
     "gifts": [
-      { "id": "asahi-inori-moonsilver" },
-      { "id": "boss-approval" },
-      { "id": "great-defender" }
+      {
+        "id": "asahi-inori-moonsilver"
+      },
+      {
+        "id": "boss-approval"
+      },
+      {
+        "id": "great-defender"
+      }
     ]
   },
   {
@@ -27,9 +39,15 @@
     "rank": "S",
     "tag": "v1.3 Fase 2",
     "gifts": [
-      { "id": "bunny-box" },
-      { "id": "sweet-pink" },
-      { "id": "rose-lychee-cake" }
+      {
+        "id": "bunny-box"
+      },
+      {
+        "id": "sweet-pink"
+      },
+      {
+        "id": "rose-lychee-cake"
+      }
     ]
   },
   {
@@ -37,9 +55,15 @@
     "slug": "zankou",
     "rank": "S",
     "gifts": [
-      { "id": "kokoro-metal" },
-      { "id": "refulgent-agreement" },
-      { "id": "seasonal-sushi-boat" }
+      {
+        "id": "kokoro-metal"
+      },
+      {
+        "id": "refulgent-agreement"
+      },
+      {
+        "id": "seasonal-sushi-boat"
+      }
     ]
   },
   {
@@ -47,10 +71,18 @@
     "slug": "iroi",
     "rank": "S",
     "gifts": [
-      { "id": "nine-hundred-ninety-nine-nights" },
-      { "id": "refulgent-agreement" },
-      { "id": "fantasia" },
-      { "id": "rose-lychee-cake" }
+      {
+        "id": "nine-hundred-ninety-nine-nights"
+      },
+      {
+        "id": "refulgent-agreement"
+      },
+      {
+        "id": "fantasia"
+      },
+      {
+        "id": "rose-lychee-cake"
+      }
     ]
   },
   {
@@ -58,10 +90,18 @@
     "slug": "shinku",
     "rank": "S",
     "gifts": [
-      { "id": "nine-hundred-ninety-nine-nights" },
-      { "id": "blue-fable" },
-      { "id": "waltz" },
-      { "id": "nyanko-cozy-uji-matcha" }
+      {
+        "id": "nine-hundred-ninety-nine-nights"
+      },
+      {
+        "id": "blue-fable"
+      },
+      {
+        "id": "waltz"
+      },
+      {
+        "id": "nyanko-cozy-uji-matcha"
+      }
     ]
   },
   {
@@ -69,11 +109,15 @@
     "slug": "chaos",
     "rank": "S",
     "gifts": [
-      { "id": "kokoro-eradicator" },
-      { "id": "we-are-one" },
-      { "id": "blazing-crimson" },
-      { "id": "cool-lala-spicy-snack" },
-      { "id": "nekomaru-oni-ramen" }
+      {
+        "id": "deluxe-ship-model-kit"
+      },
+      {
+        "id": "kokoro-silent-vow"
+      },
+      {
+        "id": "on-track"
+      }
     ]
   },
   {
@@ -81,12 +125,15 @@
     "slug": "lacrimosa",
     "rank": "S",
     "gifts": [
-      { "id": "floe-cinema-ticket" },
-      { "id": "bunny-box" },
-      { "id": "chill-out" },
-      { "id": "holy-worship-month" },
-      { "id": "tomato-100-juice" },
-      { "id": "tomato-family-bucket" }
+      {
+        "id": "bunny-box"
+      },
+      {
+        "id": "chill-out"
+      },
+      {
+        "id": "tomato-family-bucket"
+      }
     ]
   },
   {
@@ -94,9 +141,12 @@
     "slug": "hotori",
     "rank": "S",
     "gifts": [
-      { "id": "golden-moon" },
-      { "id": "yellow-glaze-vase" },
-      { "id": "chiyo-family-brew" }
+      {
+        "id": "golden-moon"
+      },
+      {
+        "id": "yellow-glaze-vase"
+      }
     ]
   },
   {
@@ -104,12 +154,12 @@
     "slug": "nanally",
     "rank": "S",
     "gifts": [
-      { "id": "kokoro-eradicator" },
-      { "id": "blazing-crimson" },
-      { "id": "sin-vice-crime" },
-      { "id": "we-are-one" },
-      { "id": "nekomaru-oni-ramen" },
-      { "id": "cool-lala-spicy-snack" }
+      {
+        "id": "blazing-crimson"
+      },
+      {
+        "id": "kokoro-metal"
+      }
     ]
   },
   {
@@ -117,9 +167,12 @@
     "slug": "baicang",
     "rank": "S",
     "gifts": [
-      { "id": "gigafluff" },
-      { "id": "refulgent-agreement" },
-      { "id": "nekomaru-vegan-ramen" }
+      {
+        "id": "gigafluff-the-strong"
+      },
+      {
+        "id": "refulgent-agreement"
+      }
     ]
   },
   {
@@ -127,11 +180,12 @@
     "slug": "chiz",
     "rank": "S",
     "gifts": [
-      { "id": "bunny-box" },
-      { "id": "holy-worship-month" },
-      { "id": "sweet-pink" },
-      { "id": "fantasia" },
-      { "id": "rose-lychee-cake" }
+      {
+        "id": "bunny-box"
+      },
+      {
+        "id": "fantasia"
+      }
     ]
   },
   {
@@ -139,11 +193,9 @@
     "slug": "daffodil",
     "rank": "S",
     "gifts": [
-      { "id": "promise" },
-      { "id": "lost-eyes" },
-      { "id": "eternal-purity" },
-      { "id": "cooly-cool-refresher" },
-      { "id": "puka-sweet-dreams-marshmallow" }
+      {
+        "id": "promise"
+      }
     ]
   },
   {
@@ -151,10 +203,9 @@
     "slug": "fadia",
     "rank": "S",
     "gifts": [
-      { "id": "glimmering-ice" },
-      { "id": "golden-spring" },
-      { "id": "balance" },
-      { "id": "deep-in-the-heart" }
+      {
+        "id": "glimmering-ice"
+      }
     ]
   },
   {
@@ -162,11 +213,12 @@
     "slug": "hathor",
     "rank": "S",
     "gifts": [
-      { "id": "ambient-night-light" },
-      { "id": "nightingales-sonata" },
-      { "id": "fever-dream" },
-      { "id": "cooly-cool-refresher" },
-      { "id": "zero-k-cold-brew" }
+      {
+        "id": "fever-dream"
+      },
+      {
+        "id": "on-track"
+      }
     ]
   },
   {
@@ -174,10 +226,12 @@
     "slug": "jiuyuan",
     "rank": "S",
     "gifts": [
-      { "id": "on-track" },
-      { "id": "moon-vase" },
-      { "id": "nightingales-sonata" },
-      { "id": "ebisu-royal-tower" }
+      {
+        "id": "moon-vase"
+      },
+      {
+        "id": "on-track"
+      }
     ]
   },
   {
@@ -185,11 +239,12 @@
     "slug": "sakiri",
     "rank": "S",
     "gifts": [
-      { "id": "bunny-box" },
-      { "id": "blue-fable" },
-      { "id": "fever-dream" },
-      { "id": "kids-energy-meal" },
-      { "id": "dirty-chai" }
+      {
+        "id": "bunny-box"
+      },
+      {
+        "id": "fever-dream"
+      }
     ]
   },
   {
@@ -197,9 +252,15 @@
     "slug": "zero",
     "rank": "S",
     "gifts": [
-      { "id": "floe-cinema-ticket" },
-      { "id": "we-are-one" },
-      { "id": "cool-lala-spicy-snack" }
+      {
+        "id": "floe-cinema-ticket"
+      },
+      {
+        "id": "we-are-one"
+      },
+      {
+        "id": "cool-lala-spicy-snack"
+      }
     ]
   },
   {
@@ -207,11 +268,12 @@
     "slug": "adler",
     "rank": "A",
     "gifts": [
-      { "id": "promise" },
-      { "id": "golden-dawn" },
-      { "id": "holy-worship-month" },
-      { "id": "great-defender" },
-      { "id": "wanderers-banjo" }
+      {
+        "id": "golden-dawn"
+      },
+      {
+        "id": "promise"
+      }
     ]
   },
   {
@@ -219,12 +281,12 @@
     "slug": "aurelia",
     "rank": "A",
     "gifts": [
-      { "id": "ambient-night-light" },
-      { "id": "promise" },
-      { "id": "blue-fable" },
-      { "id": "fantasia" },
-      { "id": "ebisu-royal-tower" },
-      { "id": "bigmouth-custard-baozi" }
+      {
+        "id": "fantasia"
+      },
+      {
+        "id": "promise"
+      }
     ]
   },
   {
@@ -232,10 +294,12 @@
     "slug": "edgar",
     "rank": "A",
     "gifts": [
-      { "id": "unrecorded-sound" },
-      { "id": "boss-approval" },
-      { "id": "blue-fable" },
-      { "id": "snowy-tofu-pudding" }
+      {
+        "id": "bear-o-metry"
+      },
+      {
+        "id": "boss-approval"
+      }
     ]
   },
   {
@@ -243,9 +307,12 @@
     "slug": "haniel",
     "rank": "A",
     "gifts": [
-      { "id": "asahi-inori-moonsilver" },
-      { "id": "fantasia" },
-      { "id": "puka-chocoa-ellie" }
+      {
+        "id": "asahi-inori-moonlight"
+      },
+      {
+        "id": "fantasia"
+      }
     ]
   },
   {
@@ -253,9 +320,12 @@
     "slug": "mint",
     "rank": "A",
     "gifts": [
-      { "id": "asahi-inori-moonsilver" },
-      { "id": "waltz" },
-      { "id": "super-tonkotsu-ramen" }
+      {
+        "id": "asahi-inori-moonlight"
+      },
+      {
+        "id": "waltz"
+      }
     ]
   },
   {
@@ -263,9 +333,12 @@
     "slug": "skia",
     "rank": "A",
     "gifts": [
-      { "id": "song-of-the-gladiator" },
-      { "id": "chill-out" },
-      { "id": "clicky-lavaburger" }
+      {
+        "id": "chill-out"
+      },
+      {
+        "id": "white-jade-lamp"
+      }
     ]
   }
 ]

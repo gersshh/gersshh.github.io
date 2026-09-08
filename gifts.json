@@ -97,7 +97,6 @@
     "value": 400,
     "fons": 20000
   },
-
   "we-are-one": {
     "name": "We Are One",
     "icon": "https://media.dexerto.com/media/We%20Are%20One.webp",
@@ -218,7 +217,6 @@
     "value": 200,
     "fons": 4000
   },
-
   "nekomaru-oni-ramen": {
     "name": "Nekomaru Oni Ramen",
     "icon": "https://media.dexerto.com/media/Nekomaru%20Oni%20Ramen.webp",
@@ -356,5 +354,47 @@
     "icon": "https://media.dexerto.com/media/Bigmouth%20Custard%20Baozi.webp",
     "value": 100,
     "fons": 300
+  },
+  "gigafluff-the-strong": {
+    "name": "Gigafluff - The Strong",
+    "icon": "https://media.dexerto.com/media/Gigafluff%20-%20The%20Strong.webp",
+    "value": 400,
+    "fons": null,
+    "_needs_image_check": true
+  },
+  "asahi-inori-moonlight": {
+    "name": "Asahi Inori - Moonlight",
+    "icon": "https://media.dexerto.com/media/Asahi%20Inori%20-%20Moonlight.webp",
+    "value": 400,
+    "fons": null,
+    "_needs_image_check": true
+  },
+  "bear-o-metry": {
+    "name": "Bear-o-metry",
+    "icon": "https://media.dexerto.com/media/Bear-o-metry.webp",
+    "value": 400,
+    "fons": null,
+    "_needs_image_check": true
+  },
+  "white-jade-lamp": {
+    "name": "White Jade Lamp",
+    "icon": "https://media.dexerto.com/media/White%20Jade%20Lamp.webp",
+    "value": 400,
+    "fons": null,
+    "_needs_image_check": true
+  },
+  "deluxe-ship-model-kit": {
+    "name": "Deluxe Ship Model Kit",
+    "icon": "https://media.dexerto.com/media/Deluxe%20Ship%20Model%20Kit.webp",
+    "value": 1200,
+    "fons": null,
+    "_needs_image_check": true
+  },
+  "kokoro-silent-vow": {
+    "name": "Kokoro Rider L1 - Silent Vow",
+    "icon": "https://media.dexerto.com/media/Kokoro%20Rider%20L1%20-%20Silent%20Vow.webp",
+    "value": 200,
+    "fons": null,
+    "_needs_image_check": true
   }
 }
