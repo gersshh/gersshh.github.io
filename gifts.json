@@ -1,59 +1,360 @@
 {
-  "handwritten-letter": { "name": "Carta Escrita a Mano", "icon": "https://media.dexerto.com/media/Handwritten Letter.webp", "value": 2000, "fons": null, "universal": true },
-  "floe-cinema-ticket": { "name": "Floe Cinema Ticket", "icon": "https://media.dexerto.com/media/Floe Cinema Ticket.webp", "value": 400, "fons": 20000, "universal": true },
-  "nine-hundred-ninety-nine-nights": { "name": "999 Nights", "icon": "https://media.dexerto.com/media/Fantasia.webp", "value": 400, "fons": 12000 },
-  "kokoro-eradicator": { "name": "Kokoro Rider L1 – Eradicator", "icon": "https://media.dexerto.com/media/Kokoro Rider L1 - Eradicator.webp", "value": 400, "fons": 20000 },
-  "kokoro-metal": { "name": "Kokoro Rider L1 – Metal Strategist", "icon": "https://media.dexerto.com/media/Kokoro Rider L1 - Metal Strategist.webp", "value": 400, "fons": 20000 },
-  "ambient-night-light": { "name": "Ambient Night Light", "icon": "https://media.dexerto.com/media/Ambient Night Light.webp", "value": 400, "fons": 20000 },
-  "bunny-box": { "name": "Bunny Box", "icon": "https://media.dexerto.com/media/Bunny Box.webp", "value": 400, "fons": 20000 },
-  "promise": { "name": "Promise", "icon": "https://media.dexerto.com/media/Promise.webp", "value": 400, "fons": 10000 },
-  "glimmering-ice": { "name": "Glimmering Ice", "icon": "https://media.dexerto.com/media/Glimmering Ice.webp", "value": 400, "fons": 20000 },
-  "golden-moon": { "name": "Golden Moon", "icon": "https://media.dexerto.com/media/Golden Dawn.webp", "value": 400, "fons": 20000 },
-  "gigafluff": { "name": "Gigafluff - Reign of Darkness", "icon": "https://media.dexerto.com/media/We Are One.webp", "value": 400, "fons": 20000 },
-  "asahi-inori-moonsilver": { "name": "Asahi Inori - Moonsilver", "icon": "https://media.dexerto.com/media/Asahi Inori - Moonsilver.webp", "value": 400, "fons": 20000 },
-  "asahi-inori-crimson": { "name": "Asahi Inori - Crimson", "icon": "https://media.dexerto.com/media/Asahi Inori - Crimson.webp", "value": 400, "fons": 20000 },
-  "asahi-inori-moonlight": { "name": "Asahi Inori - Moonlight", "icon": "https://media.dexerto.com/media/Asahi Inori - Moonlight.webp", "value": 400, "fons": 20000 },
+  "handwritten-letter": {
+    "name": "Carta Escrita a Mano",
+    "icon": "https://media.dexerto.com/media/Handwritten%20Letter.webp",
+    "value": 2000,
+    "fons": null,
+    "universal": true
+  },
+  "floe-cinema-ticket": {
+    "name": "Floe Cinema Ticket",
+    "icon": "https://media.dexerto.com/media/Floe%20Cinema%20Ticket.webp",
+    "value": 400,
+    "fons": 20000,
+    "universal": true
+  },
+  "nine-hundred-ninety-nine-nights": {
+    "name": "999 Nights",
+    "icon": "https://media.dexerto.com/media/999%20Nights.webp",
+    "value": 400,
+    "fons": 12000
+  },
+  "kokoro-eradicator": {
+    "name": "Kokoro Rider L1 – Eradicator",
+    "icon": "https://media.dexerto.com/media/Kokoro%20Rider%20L1%20-%20Eradicator.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "kokoro-metal": {
+    "name": "Kokoro Rider L1 – Metal Strategist",
+    "icon": "https://media.dexerto.com/media/Kokoro%20Rider%20L1%20-%20Metal%20Strategist.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "ambient-night-light": {
+    "name": "Ambient Night Light",
+    "icon": "https://media.dexerto.com/media/Ambient%20Night%20Light.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "bunny-box": {
+    "name": "Bunny Box",
+    "icon": "https://media.dexerto.com/media/Bunny%20Box.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "promise": {
+    "name": "Promise",
+    "icon": "https://media.dexerto.com/media/Promise.webp",
+    "value": 400,
+    "fons": 10000
+  },
+  "glimmering-ice": {
+    "name": "Glimmering Ice",
+    "icon": "https://media.dexerto.com/media/Glimmering%20Ice.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "golden-moon": {
+    "name": "Golden Moon",
+    "icon": "https://media.dexerto.com/media/Golden%20Moon.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "gigafluff": {
+    "name": "Gigafluff - Reign of Darkness",
+    "icon": "https://media.dexerto.com/media/Gigafluff%20-%20Reign%20of%20Darkness.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "asahi-inori-moonsilver": {
+    "name": "Asahi Inori - Moonsilver",
+    "icon": "https://media.dexerto.com/media/Asahi%20Inori%20-%20Moonsilver.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "asahi-inori-crimson": {
+    "name": "Asahi Inori - Crimson",
+    "icon": "https://media.dexerto.com/media/Asahi%20Inori%20-%20Crimson.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "song-of-the-gladiator": {
+    "name": "Song of the Gladiator",
+    "icon": "https://media.dexerto.com/media/Song%20of%20the%20Gladiator.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "unrecorded-sound": {
+    "name": "Unrecorded Sound",
+    "icon": "https://media.dexerto.com/media/Unrecorded%20Sound.webp",
+    "value": 400,
+    "fons": 20000
+  },
+  "on-track": {
+    "name": "On Track",
+    "icon": "https://media.dexerto.com/media/On%20Track.webp",
+    "value": 400,
+    "fons": 20000
+  },
 
-  "we-are-one": { "name": "We Are One", "icon": "https://media.dexerto.com/media/We Are One.webp", "value": 200, "fons": 4000 },
-  "blazing-crimson": { "name": "Blazing Crimson", "icon": "https://media.dexerto.com/media/Blazing Crimson.webp", "value": 200, "fons": 5400 },
-  "chill-out": { "name": "Chill Out", "icon": "https://media.dexerto.com/media/Chill Out.webp", "value": 200, "fons": 4000 },
-  "golden-dawn": { "name": "Golden Dawn", "icon": "https://media.dexerto.com/media/Golden Dawn.webp", "value": 200, "fons": 3600 },
-  "holy-worship-month": { "name": "Holy Worship Month", "icon": "https://media.dexerto.com/media/Holy Worship Month.webp", "value": 200, "fons": 4000 },
-  "refulgent-agreement": { "name": "Refulgent Agreement", "icon": "https://media.dexerto.com/media/Refulgent Agreement.webp", "value": 200, "fons": 4000 },
-  "fantasia": { "name": "Fantasia", "icon": "https://media.dexerto.com/media/Fantasia.webp", "value": 200, "fons": 3000 },
-  "boss-approval": { "name": "Boss' Approval", "icon": "https://media.dexerto.com/media/Boss' Approval.webp", "value": 200, "fons": 4000 },
-  "fever-dream": { "name": "Fever Dream", "icon": "https://media.dexerto.com/media/Fever Dream.webp", "value": 200, "fons": 5000 },
-  "moon-vase": { "name": "Moon Vase", "icon": "https://media.dexerto.com/media/Moon Vase.webp", "value": 200, "fons": 3000 },
-  "waltz": { "name": "Waltz", "icon": "https://media.dexerto.com/media/Waltz.webp", "value": 200, "fons": 3000 },
-  "blue-fable": { "name": "Blue Fable", "icon": "https://media.dexerto.com/media/Blue Fable.webp", "value": 200, "fons": 4000 },
-  "mousou-puzzle": { "name": "Mousou Puzzle", "icon": "https://media.dexerto.com/media/Mousou Puzzle.webp", "value": 200, "fons": 4000 },
-  "golden-spring": { "name": "Golden Spring", "icon": "https://media.dexerto.com/media/Golden Spring.webp", "value": 200, "fons": 4000 },
-  "balance": { "name": "Balance", "icon": "https://media.dexerto.com/media/Balance.webp", "value": 200, "fons": 4000 },
-  "sweet-pink": { "name": "Sweet Pink", "icon": "https://media.dexerto.com/media/Sweet Pink.webp", "value": 200, "fons": 4000 },
-  "lost-eyes": { "name": "Lost Eyes", "icon": "https://media.dexerto.com/media/Lost Eyes.webp", "value": 200, "fons": 4000 },
-  "eternal-purity": { "name": "Eternal Purity", "icon": "https://media.dexerto.com/media/Eternal Purity.webp", "value": 200, "fons": 4000 },
-  "yellow-glaze-vase": { "name": "Yellow Glaze Vase", "icon": "https://media.dexerto.com/media/Moon Vase.webp", "value": 200, "fons": 3000 },
-  "nightingales-sonata": { "name": "Nightingale's Sonata", "icon": "https://media.dexerto.com/media/Blue Fable.webp", "value": 200, "fons": 3000 },
+  "we-are-one": {
+    "name": "We Are One",
+    "icon": "https://media.dexerto.com/media/We%20Are%20One.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "blazing-crimson": {
+    "name": "Blazing Crimson",
+    "icon": "https://media.dexerto.com/media/Blazing%20Crimson.webp",
+    "value": 200,
+    "fons": 5400
+  },
+  "chill-out": {
+    "name": "Chill Out",
+    "icon": "https://media.dexerto.com/media/Chill%20Out.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "golden-dawn": {
+    "name": "Golden Dawn",
+    "icon": "https://media.dexerto.com/media/Golden%20Dawn.webp",
+    "value": 200,
+    "fons": 3600
+  },
+  "holy-worship-month": {
+    "name": "Holy Worship Month",
+    "icon": "https://media.dexerto.com/media/Holy%20Worship%20Month.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "refulgent-agreement": {
+    "name": "Refulgent Agreement",
+    "icon": "https://media.dexerto.com/media/Refulgent%20Agreement.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "fantasia": {
+    "name": "Fantasia",
+    "icon": "https://media.dexerto.com/media/Fantasia.webp",
+    "value": 200,
+    "fons": 3000
+  },
+  "boss-approval": {
+    "name": "Boss' Approval",
+    "icon": "https://media.dexerto.com/media/Boss'%20Approval.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "fever-dream": {
+    "name": "Fever Dream",
+    "icon": "https://media.dexerto.com/media/Fever%20Dream.webp",
+    "value": 200,
+    "fons": 5000
+  },
+  "moon-vase": {
+    "name": "Moon Vase",
+    "icon": "https://media.dexerto.com/media/Moon%20Vase.webp",
+    "value": 200,
+    "fons": 3000
+  },
+  "waltz": {
+    "name": "Waltz",
+    "icon": "https://media.dexerto.com/media/Waltz.webp",
+    "value": 200,
+    "fons": 3000
+  },
+  "blue-fable": {
+    "name": "Blue Fable",
+    "icon": "https://media.dexerto.com/media/Blue%20Fable.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "golden-spring": {
+    "name": "Golden Spring",
+    "icon": "https://media.dexerto.com/media/Golden%20Spring.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "balance": {
+    "name": "Balance",
+    "icon": "https://media.dexerto.com/media/Balance.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "sweet-pink": {
+    "name": "Sweet Pink",
+    "icon": "https://media.dexerto.com/media/Sweet%20Pink.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "lost-eyes": {
+    "name": "Lost Eyes",
+    "icon": "https://media.dexerto.com/media/Lost%20Eyes.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "eternal-purity": {
+    "name": "Eternal Purity",
+    "icon": "https://media.dexerto.com/media/Eternal%20Purity.webp",
+    "value": 200,
+    "fons": 4000
+  },
+  "yellow-glaze-vase": {
+    "name": "Yellow Glaze Vase",
+    "icon": "https://media.dexerto.com/media/Yellow%20Glaze%20Vase.webp",
+    "value": 200,
+    "fons": 3000
+  },
+  "nightingales-sonata": {
+    "name": "Nightingale's Sonata",
+    "icon": "https://media.dexerto.com/media/Nightingale's%20Sonata.webp",
+    "value": 200,
+    "fons": 3000
+  },
+  "sin-vice-crime": {
+    "name": "Sin, Vice, and Crime",
+    "icon": "https://media.dexerto.com/media/Sin,%20Vice,%20and%20Crime.webp",
+    "value": 200,
+    "fons": 4000
+  },
 
-  "nekomaru-oni-ramen": { "name": "Nekomaru Oni Ramen", "icon": "https://media.dexerto.com/media/Nekomaru Oni Ramen.webp", "value": 100, "fons": 400 },
-  "cool-lala-spicy-snack": { "name": "Cool-lala Spicy Snack", "icon": "https://media.dexerto.com/media/Cool-lala Spicy Snack.webp", "value": 100, "fons": 300 },
-  "great-defender": { "name": "Great Defender!", "icon": "https://media.dexerto.com/media/Great Defender!.webp", "value": 100, "fons": 300 },
-  "wanderers-banjo": { "name": "Wanderer's Banjo", "icon": "https://media.dexerto.com/media/Wanderer's Banjo.webp", "value": 100, "fons": 300 },
-  "purification-guard-lozenges": { "name": "Purification Guard Lozenges", "icon": "https://media.dexerto.com/media/Purification War Longezes.webp", "value": 100, "fons": 300 },
-  "bigmouth-custard-baozi": { "name": "Bigmouth Custard Baozi", "icon": "https://media.dexerto.com/media/Bigmouth Custard Baozi.webp", "value": 100, "fons": 300 },
-  "ebisu-royal-tower": { "name": "Ebisu Royal Tower", "icon": "https://media.dexerto.com/media/Ebisu Royal Tower.webp", "value": 100, "fons": 300 },
-  "refreshing-fruity": { "name": "Refreshing Fruity", "icon": "https://media.dexerto.com/media/Refreshing Fruity.webp", "value": 100, "fons": 300 },
-  "deep-in-the-heart": { "name": "Deep in the Heart", "icon": "https://media.dexerto.com/media/Deep in the Heart.webp", "value": 100, "fons": 300 },
-  "classic-trio": { "name": "Classic Trio", "icon": "https://media.dexerto.com/media/Classic Trio.webp", "value": 100, "fons": 300 },
-  "refreshing-mystery": { "name": "Refreshing Mystery", "icon": "https://media.dexerto.com/media/Refreshing Mystery.webp", "value": 100, "fons": 300 },
-  "rose-lychee-cake": { "name": "Rose Lychee Cake", "icon": "https://media.dexerto.com/media/Rose Lychee Cake.webp", "value": 100, "fons": 450 },
-  "cooly-cool-refresher": { "name": "Cooly Cool Refresher", "icon": "https://media.dexerto.com/media/Cooly Cool Refresher.webp", "value": 100, "fons": 300 },
-  "puka-sweet-dreams-marshmallow": { "name": "Puka Sweet Dreams Marshmallow", "icon": "https://media.dexerto.com/media/Puka Sweet Dreams Marshmallow.webp", "value": 100, "fons": 300 },
-  "nyanko-cozy-uji-matcha": { "name": "Nyanko Cozy Uji Matcha", "icon": "https://media.dexerto.com/media/Nyanko Macha.webp", "value": 100, "fons": 300 },
-  "chiyo-family-brew": { "name": "Chiyo Family Brew", "icon": "https://media.dexerto.com/media/Refreshing Fruity.webp", "value": 100, "fons": 300 },
-  "tomato-100-juice": { "name": "Tomato 100 Juice", "icon": "https://media.dexerto.com/media/Refreshing Mystery.webp", "value": 100, "fons": 300 },
-  "seasonal-sushi-boat": { "name": "Seasonal Sushi Boat", "icon": "https://media.dexerto.com/media/Nekomaru Oni Ramen.webp", "value": 100, "fons": 600 },
-  "nekomaru-vegan-ramen": { "name": "Nekomaru Vegan Ramen", "icon": "https://media.dexerto.com/media/Nekomaru Oni Ramen.webp", "value": 100, "fons": 400 },
-  "potato-chips": { "name": "Potato Chips", "icon": "https://media.dexerto.com/media/Cool-lala Spicy Snack.webp", "value": 100, "fons": 360 },
-  "snowy-tofu-pudding": { "name": "Snowy Tofu Pudding", "icon": "https://media.dexerto.com/media/Bigmouth Custard Baozi.webp", "value": 100, "fons": 300 }
+  "nekomaru-oni-ramen": {
+    "name": "Nekomaru Oni Ramen",
+    "icon": "https://media.dexerto.com/media/Nekomaru%20Oni%20Ramen.webp",
+    "value": 100,
+    "fons": 400
+  },
+  "nekomaru-vegan-ramen": {
+    "name": "Nekomaru Vegan Ramen",
+    "icon": "https://media.dexerto.com/media/Nekomaru%20Vegan%20Ramen.webp",
+    "value": 100,
+    "fons": 400
+  },
+  "super-tonkotsu-ramen": {
+    "name": "Super Tonkotsu Ramen",
+    "icon": "https://media.dexerto.com/media/Super%20Tonkotsu%20Ramen.webp",
+    "value": 100,
+    "fons": 400
+  },
+  "cool-lala-spicy-snack": {
+    "name": "Cool-lala Spicy Snack",
+    "icon": "https://media.dexerto.com/media/Cool-lala%20Spicy%20Snack.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "great-defender": {
+    "name": "Great Defender!",
+    "icon": "https://media.dexerto.com/media/Great%20Defender!.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "wanderers-banjo": {
+    "name": "Wanderer's Banjo",
+    "icon": "https://media.dexerto.com/media/Wanderer's%20Banjo.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "ebisu-royal-tower": {
+    "name": "Ebisu Royal Tower",
+    "icon": "https://media.dexerto.com/media/Ebisu%20Royal%20Tower.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "rose-lychee-cake": {
+    "name": "Rose Lychee Cake",
+    "icon": "https://media.dexerto.com/media/Rose%20Lychee%20Cake.webp",
+    "value": 100,
+    "fons": 450
+  },
+  "cooly-cool-refresher": {
+    "name": "Cooly Cool Refresher",
+    "icon": "https://media.dexerto.com/media/Cooly%20Cool%20Refresher.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "puka-sweet-dreams-marshmallow": {
+    "name": "Puka Sweet Dreams Marshmallow",
+    "icon": "https://media.dexerto.com/media/Puka%20Sweet%20Dreams%20Marshmallow.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "puka-chocoa-ellie": {
+    "name": "Puka Chocoa Ellie",
+    "icon": "https://media.dexerto.com/media/Puka%20Chocoa%20Ellie.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "nyanko-cozy-uji-matcha": {
+    "name": "Nyanko Cozy Uji Matcha",
+    "icon": "https://media.dexerto.com/media/Nyanko%20Macha.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "chiyo-family-brew": {
+    "name": "Chiyo Family Brew",
+    "icon": "https://media.dexerto.com/media/Chiyo%20Family%20Brew.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "tomato-100-juice": {
+    "name": "Tomato 100 Juice",
+    "icon": "https://media.dexerto.com/media/Tomato%20100%20Juice.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "tomato-family-bucket": {
+    "name": "Tomato Family Bucket",
+    "icon": "https://media.dexerto.com/media/Tomato%20Family%20Bucket.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "seasonal-sushi-boat": {
+    "name": "Seasonal Sushi Boat",
+    "icon": "https://media.dexerto.com/media/Seasonal%20Sushi%20Boat.webp",
+    "value": 100,
+    "fons": 600
+  },
+  "deep-in-the-heart": {
+    "name": "Deep in the Heart",
+    "icon": "https://media.dexerto.com/media/Deep%20in%20the%20Heart.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "snowy-tofu-pudding": {
+    "name": "Snowy Tofu Pudding",
+    "icon": "https://media.dexerto.com/media/Snowy%20Tofu%20Pudding.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "clicky-lavaburger": {
+    "name": "Clicky Lavaburger",
+    "icon": "https://media.dexerto.com/media/Clicky%20Lavaburger.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "zero-k-cold-brew": {
+    "name": "0-K Cold Brew",
+    "icon": "https://media.dexerto.com/media/0-K%20Cold%20Brew.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "dirty-chai": {
+    "name": "Nyanko Splash Black Sugar Boba Dirty Chai",
+    "icon": "https://media.dexerto.com/media/Dirty%20Chai.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "kids-energy-meal": {
+    "name": "Kids Energy Meal",
+    "icon": "https://media.dexerto.com/media/Kids%20Energy%20Meal.webp",
+    "value": 100,
+    "fons": 300
+  },
+  "bigmouth-custard-baozi": {
+    "name": "Bigmouth Custard Baozi",
+    "icon": "https://media.dexerto.com/media/Bigmouth%20Custard%20Baozi.webp",
+    "value": 100,
+    "fons": 300
+  }
 }
