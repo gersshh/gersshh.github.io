@@ -1,0 +1,278 @@
+[
+  {
+    "name": "Akane Rin",
+    "slug": "akane-rin",
+    "rank": "S",
+    "tag": "v1.4 Fase 2",
+    "gifts": [
+      { "id": "asahi-inori-crimson" },
+      { "id": "golden-dawn" },
+      { "id": "ebisu-royal-tower" }
+    ]
+  },
+  {
+    "name": "Blackbird",
+    "slug": "blackbird",
+    "rank": "S",
+    "tag": "v1.4 Fase 1",
+    "gifts": [
+      { "id": "asahi-inori-moonsilver" },
+      { "id": "boss-approval" },
+      { "id": "great-defender" }
+    ]
+  },
+  {
+    "name": "Linko",
+    "slug": "linko",
+    "rank": "S",
+    "tag": "v1.3 Fase 2",
+    "gifts": [
+      { "id": "bunny-box" },
+      { "id": "sweet-pink" },
+      { "id": "rose-lychee-cake" }
+    ]
+  },
+  {
+    "name": "Zankou",
+    "slug": "zankou",
+    "rank": "S",
+    "gifts": [
+      { "id": "kokoro-metal" },
+      { "id": "refulgent-agreement" },
+      { "id": "seasonal-sushi-boat" },
+      { "id": "cool-lala-spicy-snack" }
+    ]
+  },
+  {
+    "name": "Iroi",
+    "slug": "iroi",
+    "rank": "S",
+    "gifts": [
+      { "id": "nine-hundred-ninety-nine-nights" },
+      { "id": "ambient-night-light" },
+      { "id": "fantasia" },
+      { "id": "blue-fable" },
+      { "id": "nyanko-cozy-uji-matcha" }
+    ]
+  },
+  {
+    "name": "Shinku",
+    "slug": "shinku",
+    "rank": "S",
+    "gifts": [
+      { "id": "nine-hundred-ninety-nine-nights" },
+      { "id": "glimmering-ice" },
+      { "id": "blue-fable" },
+      { "id": "waltz" },
+      { "id": "nyanko-cozy-uji-matcha" }
+    ]
+  },
+  {
+    "name": "Chaos",
+    "slug": "chaos",
+    "rank": "S",
+    "gifts": [
+      { "id": "kokoro-eradicator" },
+      { "id": "we-are-one" },
+      { "id": "blazing-crimson" },
+      { "id": "cool-lala-spicy-snack" },
+      { "id": "nekomaru-oni-ramen" }
+    ]
+  },
+  {
+    "name": "Lacrimosa",
+    "slug": "lacrimosa",
+    "rank": "S",
+    "gifts": [
+      { "id": "floe-cinema-ticket" },
+      { "id": "chill-out" },
+      { "id": "holy-worship-month" },
+      { "id": "tomato-100-juice" }
+    ]
+  },
+  {
+    "name": "Hotori",
+    "slug": "hotori",
+    "rank": "S",
+    "gifts": [
+      { "id": "golden-moon" },
+      { "id": "yellow-glaze-vase" },
+      { "id": "chiyo-family-brew" }
+    ]
+  },
+  {
+    "name": "Nanally",
+    "slug": "nanally",
+    "rank": "S",
+    "gifts": [
+      { "id": "kokoro-eradicator" },
+      { "id": "kokoro-metal" },
+      { "id": "blazing-crimson" },
+      { "id": "we-are-one" },
+      { "id": "cool-lala-spicy-snack" },
+      { "id": "nekomaru-oni-ramen" }
+    ]
+  },
+  {
+    "name": "Baicang",
+    "slug": "baicang",
+    "rank": "S",
+    "gifts": [
+      { "id": "gigafluff" },
+      { "id": "refulgent-agreement" },
+      { "id": "nekomaru-vegan-ramen" }
+    ]
+  },
+  {
+    "name": "Chiz",
+    "slug": "chiz",
+    "rank": "S",
+    "gifts": [
+      { "id": "bunny-box" },
+      { "id": "fantasia" },
+      { "id": "holy-worship-month" },
+      { "id": "sweet-pink" },
+      { "id": "rose-lychee-cake" }
+    ]
+  },
+  {
+    "name": "Daffodil",
+    "slug": "daffodil",
+    "rank": "S",
+    "gifts": [
+      { "id": "promise" },
+      { "id": "lost-eyes" },
+      { "id": "eternal-purity" },
+      { "id": "cooly-cool-refresher" },
+      { "id": "puka-sweet-dreams-marshmallow" },
+      { "id": "nyanko-cozy-uji-matcha" }
+    ]
+  },
+  {
+    "name": "Fadia",
+    "slug": "fadia",
+    "rank": "S",
+    "gifts": [
+      { "id": "glimmering-ice" },
+      { "id": "golden-spring" },
+      { "id": "balance" },
+      { "id": "deep-in-the-heart" },
+      { "id": "classic-trio" },
+      { "id": "refreshing-mystery" }
+    ]
+  },
+  {
+    "name": "Hathor",
+    "slug": "hathor",
+    "rank": "S",
+    "gifts": [
+      { "id": "ambient-night-light" },
+      { "id": "fever-dream" },
+      { "id": "nightingales-sonata" },
+      { "id": "cooly-cool-refresher" }
+    ]
+  },
+  {
+    "name": "Jiuyuan",
+    "slug": "jiuyuan",
+    "rank": "S",
+    "gifts": [
+      { "id": "asahi-inori-moonsilver" },
+      { "id": "moon-vase" },
+      { "id": "nightingales-sonata" },
+      { "id": "ebisu-royal-tower" }
+    ]
+  },
+  {
+    "name": "Sakiri",
+    "slug": "sakiri",
+    "rank": "S",
+    "gifts": [
+      { "id": "bunny-box" },
+      { "id": "fever-dream" },
+      { "id": "blue-fable" },
+      { "id": "bigmouth-custard-baozi" }
+    ]
+  },
+  {
+    "name": "Zero",
+    "slug": "zero",
+    "rank": "S",
+    "gifts": [
+      { "id": "floe-cinema-ticket" },
+      { "id": "we-are-one" },
+      { "id": "cool-lala-spicy-snack" }
+    ]
+  },
+  {
+    "name": "Adler",
+    "slug": "adler",
+    "rank": "A",
+    "gifts": [
+      { "id": "promise" },
+      { "id": "golden-dawn" },
+      { "id": "holy-worship-month" },
+      { "id": "great-defender" },
+      { "id": "wanderers-banjo" },
+      { "id": "purification-guard-lozenges" }
+    ]
+  },
+  {
+    "name": "Aurelia",
+    "slug": "aurelia",
+    "rank": "A",
+    "gifts": [
+      { "id": "ambient-night-light" },
+      { "id": "promise" },
+      { "id": "blue-fable" },
+      { "id": "fantasia" },
+      { "id": "mousou-puzzle" },
+      { "id": "ebisu-royal-tower" },
+      { "id": "bigmouth-custard-baozi" },
+      { "id": "refreshing-fruity" }
+    ]
+  },
+  {
+    "name": "Edgar",
+    "slug": "edgar",
+    "rank": "A",
+    "gifts": [
+      { "id": "floe-cinema-ticket" },
+      { "id": "boss-approval" },
+      { "id": "blue-fable" },
+      { "id": "snowy-tofu-pudding" }
+    ]
+  },
+  {
+    "name": "Haniel",
+    "slug": "haniel",
+    "rank": "A",
+    "gifts": [
+      { "id": "asahi-inori-moonsilver" },
+      { "id": "fantasia" },
+      { "id": "cool-lala-spicy-snack" }
+    ]
+  },
+  {
+    "name": "Mint",
+    "slug": "mint",
+    "rank": "A",
+    "gifts": [
+      { "id": "asahi-inori-moonsilver" },
+      { "id": "asahi-inori-crimson" },
+      { "id": "asahi-inori-moonlight" },
+      { "id": "waltz" },
+      { "id": "potato-chips" }
+    ]
+  },
+  {
+    "name": "Skia",
+    "slug": "skia",
+    "rank": "A",
+    "gifts": [
+      { "id": "floe-cinema-ticket" },
+      { "id": "chill-out" },
+      { "id": "cooly-cool-refresher" }
+    ]
+  }
+]
